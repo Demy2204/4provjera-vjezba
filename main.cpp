@@ -91,21 +91,45 @@ int main()
             }
             cout << "Suma svih salda je " << accumulate(saldo, saldo+brKlijenata, 0.0) << endl;
             int max_indeks = max_element(saldo, saldo+brKlijenata) - saldo;
-            cout << "Klijent koji ima najveci saldo je: " << prezimeIme[max_indeks] << endl;
+            cout << "Klijent koji ima najveži saldo je: " << prezimeIme[max_indeks] << endl;
             cout << "Broj racuna s negativnim saldom: " << count_if(saldo, saldo+brKlijenata, negativan) << endl;
             cout << "Broj tekucih racuna je: " << count_if(brRacuna, brRacuna+brKlijenata, tekuci) << endl;
         }
         else if(izbor == 3)
+        {
+            cout << "Unesite ime i prezime koje pretrazujete: " << endl;
+            string pretraga;
+            cin.ignore();
+            getline(cin, pretraga);
+            if(ispisi_podatke(prezimeIme,brRacuna,saldo,brKlijenata,pretraga)==false)
+            {
+                cout << "Nema takvih klijenata." << endl;
+            }
+        }
+        else if(izbor == 4)
+        {
+            unsigned long long int broj;
+            cout << "Unesite broj racuna kojeg zelite izbrisati: ";
+            cin >> broj;
+            int i;
+            for(i = 0; i < brKlijenata; i++)
+            {
+                if(brRacuna[i] == broj)
                 {
-                    cout << "Unesite ime i prezime koje pretrazujete: " << endl;
-                    string pretraga;
-                    cin.ignore();
-                    getline(cin, pretraga);
-                    if(ispisi_podatke(prezimeIme,brRacuna,saldo,brKlijenata,pretraga)==false)
+                    for(int j = i; j < brKlijenata - 1; j++)
                     {
-                        cout << "Nema takvih klijenata." << endl;
+                        brRacuna[j] = brRacuna[j+1];
+                        prezimeIme[j] = prezimeIme[j+1];
+                        saldo[j] = saldo[j+1];
                     }
+                    brKlijenata--;
+                    break;
                 }
+            }
+            if(i==brKlijenata)
+                cout << "Trazenog racuna nema." << endl;
+
+        }
        }
     return 0;
 
