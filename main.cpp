@@ -145,7 +145,19 @@ int main()
                         }
                     }
                 }
-       }
+    else if(izbor == 7)
+    {
+        cout << "Izlaz iz programa" << endl;
+        break;
+    }
+    else
+    {
+        cout << "Krivi unos." << endl;
+    }
+    cout << endl;
+    system("pause");
+    }
+
     return 0;
 
 }
