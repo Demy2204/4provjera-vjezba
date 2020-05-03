@@ -46,7 +46,7 @@ int main()
     int izbor;
     while(1)
     {
-        system("cls");
+
         cout << "1. Upis novog korisnika" << endl;
         cout << "2. Ispis svih podataka" << endl;
         cout << "3. Pretraga prema prezimenu i imenu" << endl;
@@ -95,6 +95,17 @@ int main()
             cout << "Broj racuna s negativnim saldom: " << count_if(saldo, saldo+brKlijenata, negativan) << endl;
             cout << "Broj tekucih racuna je: " << count_if(brRacuna, brRacuna+brKlijenata, tekuci) << endl;
         }
+        else if(izbor == 3)
+                {
+                    cout << "Unesite ime i prezime koje pretrazujete: " << endl;
+                    string pretraga;
+                    cin.ignore();
+                    getline(cin, pretraga);
+                    if(ispisi_podatke(prezimeIme,brRacuna,saldo,brKlijenata,pretraga)==false)
+                    {
+                        cout << "Nema takvih klijenata." << endl;
+                    }
+                }
        }
     return 0;
 
